@@ -1,19 +1,24 @@
 function GoodsItem(props) {
-    const {mainId,displayName, displayDescription, price, full_background, addToBasked= Function.prototype
+    const {id,
+        name,
+        description,
+        price,
+        full_background,
+        addToBasked= Function.prototype
     } = props;
     return (
         <div className="card">
         <div className="card-image">
-            <img src={full_background} alt={displayName}/>
-            <span className="card-title">{displayName}</span>
+            <img src={full_background} alt={name}/>
+            <span className="card-title">{name}</span>
         </div>
         <div className="card-content">
-            <p>{displayDescription}</p>
+            <p>{description}</p>
         </div>
         <div className="card-action">
             <button className='btn' onClick={() => addToBasked({
-                mainId,
-                displayName,
+                id,
+                name,
                 price
                 }
 
