@@ -11,7 +11,6 @@ function GoodsList(props) {
             {goods.map((item) => (
                 <GoodsItem key={item.id} {...item}/>
             ))}
-
         </div>
     )
 }
