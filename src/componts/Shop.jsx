@@ -3,6 +3,7 @@ import {API_KEY, API_URL} from '../config'
 import {Preloader} from "./Preloader";
 import {GoodsList} from "./GoodsList";
 import {Card} from "./Card";
+import {BasketList} from "./BasketList";
 
 function Shop() {
     const [goods, setGoods] = useState([])
@@ -25,13 +26,49 @@ function Shop() {
                         ...orderItem, quantity: orderItem.quantity + 1,
                     }
                 } else {
-                    return item;
+                    return orderItem;
                 }
             })
 
             setOrder(newOrder)
         }
     }
+
+    const removeFromBasket = (itemId) => {
+        const newOrder = order.filter((el) => el.id !== itemId);
+        setOrder(newOrder)
+    }
+
+    const incQuantity = (itemId) => {
+        const newOrder = order.map(el => {
+            if (el.id === itemId) {
+                const newQuantity = el.quantity + 1;
+                return {
+                    ...el,
+                    quantity: newQuantity,
+                }
+            } else {
+                return el
+            }
+        })
+setOrder(newOrder)
+    }
+    const decQuantity = (itemId) => {
+        const newOrder = order.map(el => {
+            if (el.id === itemId) {
+                const newQuantity = el.quantity - 1;
+                return {
+                    ...el,
+                    quantity: newQuantity >= 0 ? newQuantity : 0,
+                }
+            } else {
+                return el
+            }
+        })
+        setOrder(newOrder)
+
+    }
+
 
     const handleBasketShow = () =>{
         setBasketSow(!isBasketShow)
@@ -57,6 +94,13 @@ function Shop() {
                 ) : (
                     <GoodsList goods={goods} addToBasked={addToBasked}/>
             )}
+        {isBasketShow && <BasketList
+            order={order}
+            handleBasketShow=}{handleBasketShow}
+            removeFromBasked={removeFromBasket}
+            incQuantity={incQuantity}
+            decQuantity={decQuantity }
+        />}
         </main>)
 }
 
