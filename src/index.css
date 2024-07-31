@@ -91,3 +91,11 @@ nav {
     opacity: 1;
   }
 }
+
+
+.basket-quantity {
+  cursor: pointer;
+  vertical-align: middle;
+  color: cadetblue;
+
+}
