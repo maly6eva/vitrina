@@ -26,3 +26,33 @@ nav {
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1rem;
 }
+
+.card {
+  display: flex;
+  flex-direction: column;
+
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+
+  cursor: pointer;
+  z-index: 5;
+  padding: 1rem
+}
+
+@media (min-width: 767px) {
+  .card {
+    top: 5rem;
+    bottom: unset;
+
+  }
+}
+
+.card-content {
+  flex-grow: 1;
+}
+
+.card-quantity {
+
+}
+
